@@ -1,29 +1,20 @@
-public class Movie {
+package br.com.alura.screenmatch.modelos;
 
-    String name;
-    int yearOfRelease;
-    boolean includingPlan;
-    private double sumReview;
-    private int totalReview;
-    int durationInMinutes;
+import br.com.alura.screenmatch.calculo.Sortable;
 
-    //get -> para pegar algum valor
-    int getTotalReview(){
-        return totalReview;
+public class Movie extends Title implements Sortable {
+    private String director;
+
+    public String getDirector() {
+        return director;
     }
 
-    // void é um método que vai apenas registrar algo
-    void showsTechnicalSheet(){
-        System.out.println("Nome do filme: " + name);
-        System.out.println("Ano de lançamento: " + yearOfRelease);
+    public void setDirector(String director) {
+        this.director = director;
     }
 
-    void review(double note){
-        sumReview += note;
-        totalReview++;
-    }
-
-    double mediaReview(){
-        return sumReview/totalReview;
+    @Override
+    public int getClassfication() {
+        return (int) mediaReview()/2;
     }
 }
